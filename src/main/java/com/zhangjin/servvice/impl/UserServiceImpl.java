@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
 import java.util.List;
@@ -18,6 +19,7 @@ import java.util.Objects;
  * Created by siiiriu on 2020/8/9.
  */
 @Service
+@Transactional
 public class UserServiceImpl implements UserService {
 
     @Autowired
@@ -25,6 +27,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public DataResult<UserEntity> register(UserEntity userEntity) {
+        List<UserEntity> entity = userDAO.findByName(userEntity.getName());
+        if (!CollectionUtils.isEmpty(entity)) {
+            return new DataResult<>(601, "name is already in use.");
+        }
         UserEntity save = userDAO.save(userEntity);
         return new DataResult<>(save);
     }

@@ -7,7 +7,7 @@ public class Token {
 
 
     private String ip;
-    private String name;
+    private User user;
 
     private String hash;
 
@@ -20,12 +20,12 @@ public class Token {
         this.ip = ip;
     }
 
-    public String getName() {
-        return name;
+    public User getUser() {
+        return user;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getHash() {

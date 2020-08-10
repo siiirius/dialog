@@ -12,6 +12,9 @@ public class DataResult<T> extends BaseResult {
         this.data = data;
     }
 
+    public DataResult(int code, String message) {
+        super(code, message);
+    }
     public T getData() {
         return data;
     }
