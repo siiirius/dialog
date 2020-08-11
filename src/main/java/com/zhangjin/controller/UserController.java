@@ -94,7 +94,6 @@ public class UserController {
             TokenProcessor.setHash(token);
             String tokenString = TokenProcessor.encode(token, KeyUtil.getKey());
             Cookie cookie = new Cookie(TokenProcessor.TOKEN_COOKIE_NAME, tokenString);
-            cookie.setDomain(request.getRemoteHost());
             cookie.setPath("/");
             response.addCookie(cookie);
         } catch (Exception e) {

@@ -17,20 +17,20 @@ public class MainController {
 
     @RequestMapping("/register")
     public String registerPage() {
-        return "/register";
+        return "register";
     }
 
 
     @RequestMapping("/login")
     public String loginPage() {
-        return "/login";
+        return "login";
     }
 
 
     @RequestMapping("/index")
     public ModelAndView index(ModelAndView modelAndView) {
         modelAndView.addAllObjects(getModel());
-        modelAndView.setViewName("/index");
+        modelAndView.setViewName("index");
         return modelAndView;
     }
 
